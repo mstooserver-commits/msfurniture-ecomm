@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title">
+  <title id="title">MS Furniture image coming soon</title>
+  <rect width="800" height="1000" fill="#eef3e8"/>
+  <path d="M155 620h490v28H155zm48-212h394l58 212H145z" fill="#d7e5ce"/>
+  <path d="M220 648v82m360-82v82" stroke="#17351d" stroke-width="20"/>
+  <text x="400" y="820" text-anchor="middle" fill="#5f8c52" font-family="Arial,sans-serif" font-size="25" letter-spacing="8">MS FURNITURE</text>
+</svg>
