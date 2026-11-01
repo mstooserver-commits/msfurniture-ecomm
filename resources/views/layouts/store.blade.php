@@ -6,6 +6,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>@livewireStyles
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>:root{--forest:#0B2818;--deep:#173B25;--lime:#9DDC68;--sage:#DCE8D2;--ivory:#FAF9F6;--cream:#F2EFE8;--charcoal:#222822;--muted:#777D73;--border:#E5E8E0;--shadow:0 18px 50px rgba(11,40,24,.08);--ease:240ms cubic-bezier(.2,.7,.2,1)}*{box-sizing:border-box}[x-cloak]{display:none!important}body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--charcoal);overflow-x:hidden}.font-display{font-family:'Cormorant Garamond',serif;letter-spacing:-.035em}.eyebrow{font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600}.glass{background:rgba(250,249,246,.94);backdrop-filter:blur(18px);border:1px solid rgba(11,40,24,.1);box-shadow:var(--shadow)}.btn-dark{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;background:var(--forest);color:white;padding:1rem 1.6rem;font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;transition:var(--ease)}.btn-dark:hover{background:var(--deep);transform:translateY(-1px)}.btn-light{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;border:1px solid rgba(34,40,34,.3);padding:.95rem 1.45rem;font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;transition:var(--ease)}.btn-light:hover{border-color:var(--forest);background:white}.hide-scrollbar::-webkit-scrollbar{display:none}.hide-scrollbar{scrollbar-width:none}a,button{transition:color var(--ease),background-color var(--ease),border-color var(--ease),opacity var(--ease)}:focus-visible{outline:2px solid var(--lime);outline-offset:4px}::selection{background:var(--lime);color:var(--forest)}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}</style>
+    <style>
+        html, body, main { width: 100%; max-width: 100%; }
+        main, main > div, section, article, header, footer { min-width: 0; }
+        img, video, svg { max-width: 100%; }
+        h1, h2, h3, p, a { overflow-wrap: break-word; }
+        @media (max-width: 639px) {
+            body { font-size: 15px; }
+            footer { margin-top: 3.5rem !important; }
+            .eyebrow { letter-spacing: .16em; }
+        }
+    </style>
 </head>
 <body class="antialiased" x-data="{mobileMenu:false,searchOpen:false}">
 <div class="bg-[#17351d] text-white text-center py-2.5 px-4 text-[10px] sm:text-[11px] uppercase tracking-[.18em]">{{ $storeSettings['announcement'] }}</div>
