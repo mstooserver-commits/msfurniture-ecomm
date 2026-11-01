@@ -1,10 +1,10 @@
 @if($subscribed)
-    <p class="text-emerald-700 text-sm">You're on the list. Welcome to the collective.</p>
+    <p class="text-[#9DDC68] text-sm" role="status">You’re on the list. Welcome to MS Furniture.</p>
 @else
     <form wire:submit="subscribe" class="flex gap-2">
-        <input wire:model="email" type="email" placeholder="your@email.com" required
-               class="flex-1 bg-white border border-zinc-300 px-4 py-2 text-sm text-zinc-900 focus:border-zinc-900 outline-none">
-        <button type="submit" class="px-4 py-2 bg-zinc-900 text-white text-xs uppercase tracking-widest hover:bg-zinc-800 transition">Join</button>
+        <label for="newsletter-email-{{ $this->getId() }}" class="sr-only">Email address</label><input id="newsletter-email-{{ $this->getId() }}" wire:model="email" type="email" placeholder="Email address" autocomplete="email" required
+               class="flex-1 min-w-0 bg-white border border-white/30 px-4 py-3 text-sm text-[#222822] focus:border-[#9DDC68] outline-none">
+        <button type="submit" wire:loading.attr="disabled" class="px-5 py-3 bg-[#9DDC68] text-[#0B2818] text-xs uppercase tracking-widest hover:bg-white transition disabled:opacity-60"><span wire:loading.remove>Subscribe</span><span wire:loading>Joining…</span></button>
     </form>
     @error('email') <p class="text-red-600 text-xs mt-1">{{ $message }}</p> @enderror
 @endif

@@ -52,7 +52,7 @@ class VariantsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('size'),
                 Tables\Columns\TextColumn::make('color'),
                 Tables\Columns\ColorColumn::make('color_hex'),
-                Tables\Columns\TextColumn::make('price')->money('AUD'),
+                Tables\Columns\TextColumn::make('price')->money('INR'),
                 Tables\Columns\TextColumn::make('stock')
                     ->badge()
                     ->color(fn (int $state): string => $state <= 0 ? 'danger' : ($state <= 5 ? 'warning' : 'success')),

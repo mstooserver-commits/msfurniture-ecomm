@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
-    //
+    protected $fillable = ['question', 'answer', 'category', 'is_active', 'sort_order'];
+
+    protected function casts(): array
+    {
+        return ['is_active' => 'boolean'];
+    }
 }

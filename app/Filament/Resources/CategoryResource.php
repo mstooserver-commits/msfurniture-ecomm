@@ -67,6 +67,15 @@ class CategoryResource extends Resource
             ])
             ->defaultSort('sort_order')
             ->reorderable('sort_order')
+            ->filters([
+                Tables\Filters\TernaryFilter::make('is_active')
+                    ->label('Category status')
+                    ->trueLabel('Active categories')
+                    ->falseLabel('Inactive categories')
+                    ->default(true),
+                Tables\Filters\TernaryFilter::make('is_featured')
+                    ->label('Featured'),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

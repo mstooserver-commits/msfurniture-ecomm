@@ -19,8 +19,8 @@ class ItemsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('product_name'),
                 Tables\Columns\TextColumn::make('variant_label')->placeholder('—'),
                 Tables\Columns\TextColumn::make('quantity'),
-                Tables\Columns\TextColumn::make('unit_price')->money('AUD'),
-                Tables\Columns\TextColumn::make('total')->money('AUD'),
+                Tables\Columns\TextColumn::make('unit_price')->money('INR'),
+                Tables\Columns\TextColumn::make('total')->money('INR'),
             ])
             ->paginated(false);
     }

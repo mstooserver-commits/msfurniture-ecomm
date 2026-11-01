@@ -23,14 +23,22 @@ class CartPage extends Component
 
     public function updateQty(int $itemId, int $qty, CartService $cart): void
     {
-        $item = CartItem::findOrFail($itemId);
+        $item = $cart->getCart()->items()->with(['product', 'variant'])->findOrFail($itemId);
+        $availableStock = $item->variant ? $item->variant->stock : $item->product->stock;
+
+        if ($qty > $availableStock) {
+            session()->flash('error', "Only {$availableStock} available in stock.");
+            return;
+        }
+
         $cart->updateQuantity($item, $qty);
         $this->dispatch('cart-updated');
     }
 
     public function remove(int $itemId, CartService $cart): void
     {
-        $cart->remove(CartItem::findOrFail($itemId));
+        $item = $cart->getCart()->items()->findOrFail($itemId);
+        $cart->remove($item);
         $this->dispatch('cart-updated');
     }
 

@@ -20,7 +20,7 @@ class StatsOverview extends BaseWidget
         $lowStock = Product::whereColumn('stock', '<=', 'low_stock_threshold')->count();
 
         return [
-            Stat::make('Revenue', '$'.number_format($revenue, 2))
+            Stat::make('Revenue', '₹'.number_format($revenue, 2))
                 ->description('Paid orders')
                 ->descriptionIcon('heroicon-m-banknotes')
                 ->color('success')

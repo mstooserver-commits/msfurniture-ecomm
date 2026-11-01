@@ -63,7 +63,7 @@ class CheckoutService
                 'status' => OrderStatus::Pending,
                 'payment_status' => PaymentStatus::Pending,
                 'payment_method' => $data['payment_method'] ?? PaymentGateway::Cod->value,
-                'currency' => $data['currency'] ?? 'AUD',
+                'currency' => $data['currency'] ?? config('shop.currency', 'INR'),
                 'subtotal' => $totals['subtotal'],
                 'discount_amount' => $totals['discount'],
                 'tax_amount' => $totals['tax'],

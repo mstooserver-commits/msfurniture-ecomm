@@ -14,7 +14,7 @@
             <div class="grid sm:grid-cols-3 gap-4 mb-8">
                 <div class="border border-zinc-200 p-4 bg-white">
                     <p class="text-xs uppercase tracking-widest text-zinc-500">Wallet</p>
-                    <p class="text-2xl font-semibold mt-1 text-zinc-900">${{ number_format(auth()->user()->wallet_balance, 2) }}</p>
+                    <p class="text-2xl font-semibold mt-1 text-zinc-900">₹{{ number_format(auth()->user()->wallet_balance, 2) }}</p>
                 </div>
                 <div class="border border-zinc-200 p-4 bg-white">
                     <p class="text-xs uppercase tracking-widest text-zinc-500">Reward Points</p>
@@ -29,7 +29,7 @@
             @forelse(auth()->user()->orders()->latest()->limit(5)->get() as $order)
                 <a href="{{ route('orders.show', $order) }}" class="flex justify-between py-3 border-b border-zinc-200 hover:text-zinc-600 text-zinc-900">
                     <span>{{ $order->order_number }}</span>
-                    <span>${{ number_format($order->total, 2) }} · {{ $order->status->label() }}</span>
+                    <span>₹{{ number_format($order->total, 2) }} · {{ $order->status->label() }}</span>
                 </a>
             @empty
                 <p class="text-zinc-500 text-sm">No orders yet.</p>

@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('google_id')->nullable()->unique();
             $table->decimal('wallet_balance', 12, 2)->default(0);
             $table->unsignedInteger('reward_points')->default(0);
-            $table->string('preferred_currency', 3)->default('AUD');
+            $table->string('preferred_currency', 3)->default('INR');
             $table->string('preferred_locale', 5)->default('en');
             $table->string('theme')->default('dark');
             $table->boolean('is_admin')->default(false);
@@ -222,7 +222,7 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->string('payment_status')->default('pending');
             $table->string('payment_method')->nullable();
-            $table->string('currency', 3)->default('AUD');
+            $table->string('currency', 3)->default('INR');
             $table->decimal('subtotal', 12, 2);
             $table->decimal('discount_amount', 12, 2)->default(0);
             $table->decimal('tax_amount', 12, 2)->default(0);
@@ -269,7 +269,7 @@ return new class extends Migration
             $table->string('gateway'); // stripe, razorpay, cod
             $table->string('transaction_id')->nullable();
             $table->decimal('amount', 12, 2);
-            $table->string('currency', 3)->default('AUD');
+            $table->string('currency', 3)->default('INR');
             $table->string('status')->default('pending');
             $table->json('meta')->nullable();
             $table->timestamps();

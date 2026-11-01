@@ -110,7 +110,7 @@ class OrderResource extends Resource
                         PaymentStatus::Refunded => 'gray',
                     }),
                 Tables\Columns\TextColumn::make('total')
-                    ->money('AUD')
+                    ->money('INR')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('items_count')
                     ->counts('items')

@@ -61,12 +61,12 @@
             <div class="glass p-8 h-fit">
                 <h2 class="text-xs uppercase tracking-widest text-zinc-500 mb-6">Order Total</h2>
                 <div class="space-y-3 text-sm mb-6">
-                    <div class="flex justify-between"><span class="text-zinc-500">Subtotal</span><span>${{ number_format($totals['subtotal'], 2) }}</span></div>
-                    @if($totals['discount'] > 0)<div class="flex justify-between text-emerald-700"><span>Discount</span><span>-${{ number_format($totals['discount'], 2) }}</span></div>@endif
-                    <div class="flex justify-between"><span class="text-zinc-500">Tax</span><span>${{ number_format($totals['tax'], 2) }}</span></div>
-                    <div class="flex justify-between"><span class="text-zinc-500">Shipping</span><span>${{ number_format($totals['shipping'], 2) }}</span></div>
+                    <div class="flex justify-between"><span class="text-zinc-500">Subtotal</span><span>₹{{ number_format($totals['subtotal'], 2) }}</span></div>
+                    @if($totals['discount'] > 0)<div class="flex justify-between text-emerald-700"><span>Discount</span><span>−₹{{ number_format($totals['discount'], 2) }}</span></div>@endif
+                    <div class="flex justify-between"><span class="text-zinc-500">Tax</span><span>₹{{ number_format($totals['tax'], 2) }}</span></div>
+                    <div class="flex justify-between"><span class="text-zinc-500">Shipping</span><span>₹{{ number_format($totals['shipping'], 2) }}</span></div>
                     <div class="flex justify-between text-xl font-semibold pt-3 border-t border-zinc-200">
-                        <span>Total</span><span>${{ number_format($totals['total'], 2) }}</span>
+                        <span>Total</span><span>₹{{ number_format($totals['total'], 2) }}</span>
                     </div>
                 </div>
                 <button type="submit" class="w-full bg-zinc-900 text-white py-4 text-xs uppercase tracking-widest hover:bg-zinc-800 transition">Place Order</button>

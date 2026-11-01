@@ -63,7 +63,7 @@ class CouponResource extends Resource
                 Tables\Columns\TextColumn::make('code')->searchable()->copyable()->weight('bold'),
                 Tables\Columns\TextColumn::make('type')->badge(),
                 Tables\Columns\TextColumn::make('value')
-                    ->formatStateUsing(fn ($state, Coupon $record) => $record->type === 'percentage' ? "{$state}%" : '$'.number_format($state, 2)),
+                    ->formatStateUsing(fn ($state, Coupon $record) => $record->type === 'percentage' ? "{$state}%" : '₹'.number_format($state, 2)),
                 Tables\Columns\TextColumn::make('used_count')->label('Used'),
                 Tables\Columns\TextColumn::make('expires_at')->dateTime()->placeholder('No expiry'),
                 Tables\Columns\IconColumn::make('is_active')->boolean(),

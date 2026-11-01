@@ -20,9 +20,13 @@ class ProductShow extends Component
 
     public int $selectedImage = 0;
 
+    public ?string $cartMessage = null;
+
     public function mount(Product $product): void
     {
         $this->product = $product->load(['images', 'videos', 'variants', 'brand', 'category', 'reviews.user']);
+        $this->variantId = $this->product->variants
+            ->first(fn ($variant) => $variant->is_active && $variant->stock > 0)?->id;
         $this->product->increment('views_count');
         $this->recordView();
     }
@@ -41,24 +45,64 @@ class ProductShow extends Component
 
     public function selectVariant(int $id): void
     {
-        $this->variantId = $id;
+        $variant = $this->product->variants->firstWhere('id', $id);
+
+        if ($variant?->is_active && $variant->stock > 0) {
+            $this->variantId = $id;
+            $this->cartMessage = null;
+        }
+    }
+
+    public function incrementQuantity(): void
+    {
+        $available = $this->selectedVariantStock();
+        $this->quantity = min($this->quantity + 1, max(1, $available));
+    }
+
+    public function decrementQuantity(): void
+    {
+        $this->quantity = max(1, $this->quantity - 1);
     }
 
     public function addToCart(CartService $cart): void
     {
+        if ($this->product->variants->isNotEmpty() && ! $this->variantId) {
+            $this->addError('variantId', 'Please select an available finish.');
+            return;
+        }
+
         $variant = $this->variantId
             ? $this->product->variants()->find($this->variantId)
             : null;
 
+        if (($variant && (! $variant->is_active || $variant->stock < $this->quantity)) || (! $variant && $this->product->stock < $this->quantity)) {
+            $this->addError('quantity', 'The requested quantity is not available.');
+            return;
+        }
+
         $cart->add($this->product, $variant, $this->quantity);
         $this->dispatch('cart-updated');
-        session()->flash('success', 'Added to cart.');
+        $this->cartMessage = "{$this->product->name} added to your cart.";
     }
 
     public function buyNow(CartService $cart): void
     {
         $this->addToCart($cart);
+
+        if ($this->getErrorBag()->isNotEmpty()) {
+            return;
+        }
+
         $this->redirect(route('checkout'), navigate: true);
+    }
+
+    private function selectedVariantStock(): int
+    {
+        if (! $this->variantId) {
+            return $this->product->stock;
+        }
+
+        return (int) ($this->product->variants->firstWhere('id', $this->variantId)?->stock ?? 0);
     }
 
     public function toggleWishlist(): void

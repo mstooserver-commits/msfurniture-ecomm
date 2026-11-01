@@ -31,7 +31,7 @@ class CheckoutPage extends Component
             'city' => '',
             'state' => '',
             'postal_code' => '',
-            'country' => 'AU',
+            'country' => 'IN',
         ];
     }
 

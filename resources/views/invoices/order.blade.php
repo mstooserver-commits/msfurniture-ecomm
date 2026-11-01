@@ -24,14 +24,14 @@
                 <tr>
                     <td>{{ $item->product_name }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>${{ number_format($item->unit_price, 2) }}</td>
-                    <td>${{ number_format($item->total, 2) }}</td>
+                    <td>₹{{ number_format($item->unit_price, 2) }}</td>
+                    <td>₹{{ number_format($item->total, 2) }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     <p style="margin-top:20px;text-align:right;">
-        <strong>Total: ${{ number_format($order->total, 2) }} {{ $order->currency }}</strong>
+        <strong>Total: ₹{{ number_format($order->total, 2) }} {{ $order->currency }}</strong>
     </p>
 </body>
 </html>

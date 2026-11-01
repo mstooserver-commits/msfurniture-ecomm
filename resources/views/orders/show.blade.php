@@ -25,14 +25,14 @@
         @foreach($order->items as $item)
             <div class="flex justify-between border-b border-zinc-200 pb-4 text-zinc-900">
                 <span>{{ $item->product_name }} × {{ $item->quantity }}</span>
-                <span>${{ number_format($item->total, 2) }}</span>
+                <span>₹{{ number_format($item->total, 2) }}</span>
             </div>
         @endforeach
     </div>
 
     <div class="flex justify-between text-lg font-semibold mb-6 text-zinc-900">
         <span>Total</span>
-        <span>${{ number_format($order->total, 2) }}</span>
+        <span>₹{{ number_format($order->total, 2) }}</span>
     </div>
 
     <a href="{{ route('orders.invoice', $order) }}" class="inline-block border border-zinc-900 px-6 py-3 text-xs uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition">Download Invoice</a>

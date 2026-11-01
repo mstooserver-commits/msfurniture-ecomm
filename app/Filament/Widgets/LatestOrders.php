@@ -24,7 +24,7 @@ class LatestOrders extends BaseWidget
                 Tables\Columns\TextColumn::make('order_number')->weight('bold'),
                 Tables\Columns\TextColumn::make('user.name')->placeholder('Guest'),
                 Tables\Columns\TextColumn::make('status')->badge(),
-                Tables\Columns\TextColumn::make('total')->money('AUD'),
+                Tables\Columns\TextColumn::make('total')->money('INR'),
                 Tables\Columns\TextColumn::make('created_at')->since(),
             ])
             ->actions([

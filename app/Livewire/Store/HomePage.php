@@ -3,7 +3,9 @@
 namespace App\Livewire\Store;
 
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\InstagramPost;
 use App\Models\Product;
 use App\Models\Testimonial;
@@ -20,8 +22,11 @@ class HomePage extends Component
             'bestSellers' => Product::active()->where('is_best_seller', true)->with(['images', 'brand'])->limit(8)->get(),
             'flashSale' => Product::active()->where('is_flash_sale', true)->with(['images', 'brand'])->limit(4)->get(),
             'categories' => Category::active()->where('is_featured', true)->orderBy('sort_order')->limit(6)->get(),
+            'collections' => Collection::where('is_active', true)->where('is_featured', true)->orderBy('sort_order')->limit(4)->get(),
             'testimonials' => Testimonial::where('is_active', true)->orderBy('sort_order')->limit(6)->get(),
             'instagram' => InstagramPost::where('is_active', true)->orderBy('sort_order')->limit(8)->get(),
+            'journal' => Blog::where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+                ->with('blogCategory')->latest('published_at')->limit(3)->get(),
         ])->layout('layouts.store');
     }
 }

@@ -232,7 +232,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('category.name')
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money('AUD')
+                    ->money('INR')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('stock')
                     ->sortable()
